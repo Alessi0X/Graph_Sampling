@@ -43,10 +43,12 @@ class SRW_RWF_ISRW:
             curr_node = chosen_node
             iteration = iteration + 1
 
-            if iteration % self.T == 0:
-                if ((sampled_graph.number_of_edges() - edges_before_t_iter) < self.growth_size):
-                    curr_node = random.randint(0, nr_nodes - 1)
-                edges_before_t_iter = sampled_graph.number_of_edges()
+            # if iteration % self.T == 0:
+            #     if ((sampled_graph.number_of_edges() - edges_before_t_iter) < self.growth_size):
+            #         curr_node = random.randint(0, nr_nodes - 1)
+            #     edges_before_t_iter = sampled_graph.number_of_edges()
+            if iteration == self.T:
+                break
         return sampled_graph
 
     def random_walk_sampling_with_fly_back(self, complete_graph, nodes_to_sample, fly_back_prob):
